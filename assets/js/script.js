@@ -21,7 +21,7 @@ var quiz = [
         b: 'HTML',
         c: 'JavaScript',
         d: 'Web',
-        correct: b 
+        correct: 'b' 
     },
     {
         question: `Which is not a JavaScript Data type?`,
@@ -29,7 +29,7 @@ var quiz = [
         b: 'Letters',
         c: 'Boolean',
         d: 'Undefined',
-        correct: b
+        correct: 'b'
     },
     {
         question: `Console is a property of _____?` ,
@@ -37,7 +37,7 @@ var quiz = [
         b: 'The Internet',
         c: 'The JavaScript File',
         d: 'The Window',
-        correct: d 
+        correct: 'd' 
     },
     {
         question: 'Which is not a math operation in JavaScript?' ,
@@ -45,7 +45,7 @@ var quiz = [
         b: `%`,
         c: `~`,
         d: `/`,
-        correct: c
+        correct: 'c'
     },
     {
         question: `What does the this keyword refer to`  ,
@@ -53,7 +53,7 @@ var quiz = [
         b: 'The parent object',
         c: 'The parent function',
         d: 'This this',
-        correct: b 
+        correct: 'b' 
     },
     {
         question: `How do you write comments in JavaScript?` ,
@@ -61,15 +61,21 @@ var quiz = [
         b: '/* */',
         c: '<!-- -->',
         d: `a & b`,
-        correct: d 
+        correct: 'd' 
     }
 ]
-
+var bodyEl = document.querySelector('body');
 var start = document.querySelector('.start');
+var initialScreen = document.querySelector('#start-screen');
+var quiz = document.getElementById('quiz');
 
 
 function startQuiz() {
-    
+    // while(bodyEl.firstChild) {
+    //     bodyEl.removeChild(bodyEl.firstChild);
+    // }
+    initialScreen.style.display = 'none';
+    quiz.style.display = "flex"
 };
 
-start.addEventListener('click', startQuiz())
+start.addEventListener('click', startQuiz)
