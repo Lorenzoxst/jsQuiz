@@ -1,0 +1,181 @@
+html {
+    /* set 1rem to 10px instead of native 16px to make it easier to calculate font-size values for the rest of the page (e.g. 1.6rem is 16px, 2.0rem is 20px, etc.) */
+    font-size: 62.5%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #ab3a7f;
+    background-image: linear-gradient(90deg, rgba(65,22,94,1) 23%, rgba(171,58,127,0.8799894957983193) 72%, rgba(0,212,255,0.7315301120448179) 100%);
+    display: flex;
+    justify-content: center;
+    margin: 10% auto;
+    overflow: hidden;
+     /* set body font size to 1.75rem, which is 1.75x more than the font-size of 10px, making it 17.5px  */
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0.625rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h1 {
+    /* 4rem = 40px (4 * 10px) */
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.5rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.container {
+
+    width: 40%;
+    color: #fff;
+    text-align: center;
+}
+
+.highscores a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    color: #fff;
+    padding: 1%;
+}
+
+.start,
+.submit-btn,
+.clear-hs,
+.go-back,
+.quiz-button {
+    width: 15%;
+    padding: .5rem;
+    border-radius: 5px;
+    border: none;
+    background: #00d4ff;
+    color: #fff;
+}
+.start:hover,
+.submit-btn:hover,
+.clear-hs:hover,
+.go-back:hover,
+.quiz-button:hover {
+    box-shadow: -2px 2px 2px 1px rgb(255 255 255 / 42%);
+    cursor: pointer;
+}
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+}
+
+#quiz button{
+    width: 30%;
+    max-width: 30%;
+    margin: .5rem 0;
+    padding-left: .7rem;
+    background: #41165e;
+    text-align: left;
+}
+
+.right-wrong {
+    border-top: 3px dashed #fff;
+    padding-top: 2%;
+    font-size: 2rem;
+    opacity: 70%;
+    font-style: italic;
+    padding-left: 3%;
+}
+
+.time-left,
+.time-left-final {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1%;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    font-style: oblique;
+}
+
+.finished {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.finished p {
+    margin: .5rem 0;
+    font-size: 1.3rem;
+}
+
+#initials {
+    padding: .5rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.highscore-page {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+.highscore-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.highscore-list li {
+    padding: .5rem .4rem;
+    margin: .5rem 0;
+    text-align: end;
+    border: 3px solid #fff;
+    border-radius: 15px;
+    background-image: linear-gradient(90deg, rgba(65,22,94,1) 23%, rgba(171,58,127,0.8799894957983193) 72%, rgba(0,212,255,0.7315301120448179) 100%);
+}
+
+
+
+
+.button-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
