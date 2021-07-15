@@ -114,6 +114,7 @@ var wrong = 0;
 var currentQuestion = 0;
 var score;
 
+
 var qQ = document.getElementById('quiz-question');
 var answA = document.getElementById('answ-a');
 var answB = document.getElementById('answ-b');
@@ -122,7 +123,7 @@ var answD = document.getElementById('answ-d');
 
 var quizButton = document.querySelectorAll('.quiz-button');
 
-
+finalScore.innerHTML = "Your final score was:" + score;
 
 
 function setTime() {
@@ -156,6 +157,10 @@ function nextQuestion() {
                 quizContainer.setAttribute('data-state', 'hidden');
                 finishedScreen.setAttribute('data-state', 'shown');
                 score = (right * 10) + timeLeftFinal;
+                ( function(){
+                    score = (right * 10) + timeLeftFinal;
+                    return score; 
+                })();
                 finalScore.innerHTML = "Your final score was:" + score;
                 clearInterval(timeInterval);
                 }
