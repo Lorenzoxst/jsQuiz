@@ -104,13 +104,15 @@ var quizContainer = document.getElementById('quiz-container');
 var finishedScreen = document.querySelector('.finished');
 var timeLeft = document.querySelector('.time-left');
 var rightWrong = document.querySelector('.right-wrong');
+var didNotFinish = document.querySelector('.did-not-finish');
+var finalScore = document.querySelector('.final-score');
 
 var nextQuestionTimer = 2;
 var timer = 60;
 var right = 0;
 var wrong = 0;
 var currentQuestion = 0;
-
+var score;
 
 var qQ = document.getElementById('quiz-question');
 var answA = document.getElementById('answ-a');
@@ -122,32 +124,40 @@ var quizButton = document.querySelectorAll('.quiz-button');
 
 
 
+
 function setTime() {
 
     var timeInterval = setInterval(function() {
         if(timer > 0){
         timer--;
         timeLeft.textContent = timer;
-        } else {
-            
+        } else { 
+            quizContainer.setAttribute('data-state', 'hidden');
+            finishedScreen.setAttribute('data-state', 'shown');
+            didNotFinish.setAttribute('data-state', 'shown')
+            var score = (right * 10);
+            finalScore.innerHTML = "Your final score was:" + score;
             clearInterval(timeInterval)
         }
         }, 1000)   
     }
 
 function nextQuestion() {
-        var nextQuestionTimer = 2;
+        var nextQuestionTimer = 1;
         setInterval(function(){
             nextQuestionTimer--
             if(nextQuestionTimer === 0 && currentQuestion < quiz.length -1 ){
                 currentQuestion++;
-                rightWrong.setAttribute('data-state', 'hidden')
+                rightWrong.setAttribute('data-state', 'hidden');
                 loadQuiz();
                 } else if(nextQuestionTimer === 0 && currentQuestion === quiz.length -1) {
                 timeLeftFinal = timer;
                 console.log(timeLeftFinal);
                 quizContainer.setAttribute('data-state', 'hidden');
                 finishedScreen.setAttribute('data-state', 'shown');
+                score = (right * 10) + timeLeftFinal;
+                finalScore.innerHTML = "Your final score was:" + score;
+                clearInterval(timeInterval);
                 }
             clearInterval(nextQuestion)
         }, 1000)
@@ -183,7 +193,7 @@ function change(event){
     quizButton[i].setAttribute('data-is', "wrong")
     }
     nextQuestion();
-    }
+}
 
 
 function loadQuiz() {
@@ -201,7 +211,6 @@ function loadQuiz() {
     isCorrect.setAttribute('data-is', 'true');
 
 
-    
 }
 
 quizButton[0].addEventListener('click', change);

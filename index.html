@@ -32,13 +32,13 @@
 
     <div class="container finished" data-state="hidden">
         <h2>Finished!</h2>
-        <p class="final-score">Your final score was: </p>
+        <p class="did-not-finish" data-state="hidden">Unfortunately, you did not finish in time. Points will be deducted!</p>
+        <p class="final-score"></p>
         <p>Enter your initials below to save your highscore!</p>
         <form>
             <input type="text" name="enter-initials" id="initials" placeholder="enter your initials">
             <button type="submit" class="submit-btn">Submit</button>
         </form>
-        <p class="time-left-final"></p>
     </div>
 
     <div class="container highscore-page" data-state="hidden">
