@@ -64,6 +64,19 @@ p {
     text-align: center;
 }
 
+[data-state = "hidden"] {
+    display: none;
+}
+
+[data-state = "shown"] {
+    display: flex;
+}
+
+#start-screen {
+    flex-direction: column;
+    align-items: center;
+}
+
 .highscores a {
     position: absolute;
     top: 0;
@@ -94,14 +107,14 @@ p {
     cursor: pointer;
 }
 
-#quiz {
-    display: none;
+#quiz-container {
+    /* display: none; */
     flex-direction: column;
     text-align: left;
 
 }
 
-#quiz button{
+#quiz-container button{
     width: 30%;
     max-width: 30%;
     margin: .5rem 0;
@@ -133,7 +146,7 @@ p {
 
 .finished {
     text-align: left;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     align-content: center;
 }
@@ -150,7 +163,7 @@ p {
 }
 
 .highscore-page {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     text-align: left;
 }

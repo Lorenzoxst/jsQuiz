@@ -15,13 +15,14 @@ stretch goals: have user decide how many questions, maybe have a easy, medium an
 */
 
 var quiz = [
+    
     {
         question: `JavaScript is a client-side and server-side scripting language inserted into ____ pages and is understood by web browsers. `,
         a: 'CSS',
         b: 'HTML',
         c: 'JavaScript',
         d: 'Web',
-        correct: 'b' 
+        correct: 'answ-b' 
     },
     {
         question: `Which is not a JavaScript Data type?`,
@@ -29,15 +30,15 @@ var quiz = [
         b: 'Letters',
         c: 'Boolean',
         d: 'Undefined',
-        correct: 'b'
+        correct: 'answ-b'
     },
     {
-        question: `Console is a property of _____?` ,
+        question: `Console is a property of _____?`,
         a: 'The DOM',
         b: 'The Internet',
         c: 'The JavaScript File',
         d: 'The Window',
-        correct: 'd' 
+        correct: 'answ-d' 
     },
     {
         question: 'Which is not a math operation in JavaScript?' ,
@@ -45,7 +46,7 @@ var quiz = [
         b: `%`,
         c: `~`,
         d: `/`,
-        correct: 'c'
+        correct: 'answ-c'
     },
     {
         question: `What does the this keyword refer to`  ,
@@ -53,7 +54,7 @@ var quiz = [
         b: 'The parent object',
         c: 'The parent function',
         d: 'This this',
-        correct: 'b' 
+        correct: 'answ-b' 
     },
     {
         question: `How do you write comments in JavaScript?` ,
@@ -61,21 +62,150 @@ var quiz = [
         b: '/* */',
         c: '<!-- -->',
         d: `a & b`,
-        correct: 'd' 
-    }
-]
+        correct: 'answ-d' 
+    },
+    {
+        question: `What is JavaScript?` ,
+        a: 'Something Groovy',
+        b: 'A Scribe',
+        c: 'Object Based Programming Language',
+        d: `A Reading Language`,
+        correct: 'answ-c'
+    },
+    {
+        question: `x*y is what kind of math operation?` ,
+        a: 'Multiplication',
+        b: 'Division',
+        c: 'Addition',
+        d: `Subtraction`,
+        correct: 'answ-a'
+    }, 
+    {
+        question: `How do you target an id element on a HTML page in Javascript?` ,
+        a: 'grabElement',
+        b: 'getElementById',
+        c: 'getId',
+        d: `idGetByElement`,
+        correct: 'answ-b'
+    },
+    {
+        question: `What does return do?` ,
+        a: 'Stops the function',
+        b: 'Returns a value',
+        c: 'Goes back to the start',
+        d: `a & b`,
+        correct: 'answ-d'
+    }, 
+];
 var bodyEl = document.querySelector('body');
 var start = document.querySelector('.start');
 var initialScreen = document.querySelector('#start-screen');
-var quiz = document.getElementById('quiz');
+var quizContainer = document.getElementById('quiz-container');
+var finishedScreen = document.querySelector('.finished');
+var timeLeft = document.querySelector('.time-left');
+var rightWrong = document.querySelector('.right-wrong');
 
+var nextQuestionTimer = 2;
+var timer = 60;
+var right = 0;
+var wrong = 0;
+var currentQuestion = 0;
+
+
+var qQ = document.getElementById('quiz-question');
+var answA = document.getElementById('answ-a');
+var answB = document.getElementById('answ-b');
+var answC = document.getElementById('answ-c');
+var answD = document.getElementById('answ-d');
+
+var quizButton = document.querySelectorAll('.quiz-button');
+
+
+
+function setTime() {
+
+    var timeInterval = setInterval(function() {
+        if(timer > 0){
+        timer--;
+        timeLeft.textContent = timer;
+        } else {
+            
+            clearInterval(timeInterval)
+        }
+        }, 1000)   
+    }
+
+function nextQuestion() {
+        var nextQuestionTimer = 2;
+        setInterval(function(){
+            nextQuestionTimer--
+            if(nextQuestionTimer === 0 && currentQuestion < quiz.length -1 ){
+                currentQuestion++;
+                rightWrong.setAttribute('data-state', 'hidden')
+                loadQuiz();
+                } else if(nextQuestionTimer === 0 && currentQuestion === quiz.length -1) {
+                timeLeftFinal = timer;
+                console.log(timeLeftFinal);
+                quizContainer.setAttribute('data-state', 'hidden');
+                finishedScreen.setAttribute('data-state', 'shown');
+                }
+            clearInterval(nextQuestion)
+        }, 1000)
+    }
 
 function startQuiz() {
     // while(bodyEl.firstChild) {
     //     bodyEl.removeChild(bodyEl.firstChild);
     // }
-    initialScreen.style.display = 'none';
-    quiz.style.display = "flex"
-};
+    if (initialScreen.getAttribute('data-state') === "shown"){
+        initialScreen.setAttribute('data-state', 'hidden')
+        quizContainer.setAttribute('data-state', 'shown')
+        setTime();
+        loadQuiz();
+    } else {
+        return
+    }
+}
 
+function change(event){
+    var targetEl = event.target;
+    if (targetEl.getAttribute('data-is') === "true"){
+        rightWrong.setAttribute('data-state', 'shown')
+        rightWrong.textContent = "Right";
+        right++;
+        
+    } else {
+        rightWrong.setAttribute('data-state', 'shown')
+        rightWrong.textContent = "Wrong"
+        wrong++;
+    }
+    for (var i = 0; i < quizButton.length; i++) {
+    quizButton[i].setAttribute('data-is', "wrong")
+    }
+    nextQuestion();
+    }
+
+
+function loadQuiz() {
+    var currentQuiz = quiz[currentQuestion];
+    console.log(currentQuiz)
+    var isCorrect = document.getElementById(currentQuiz.correct);
+    console.log(isCorrect)
+
+    qQ.textContent = currentQuiz.question;
+    answA.textContent = currentQuiz.a;
+    answB.textContent = currentQuiz.b;
+    answC.textContent = currentQuiz.c;
+    answD.textContent = currentQuiz.d;
+
+    isCorrect.setAttribute('data-is', 'true');
+
+
+    
+}
+
+quizButton[0].addEventListener('click', change);
+quizButton[1].addEventListener('click', change);
+quizButton[2].addEventListener('click', change);
+quizButton[3].addEventListener('click', change);
 start.addEventListener('click', startQuiz)

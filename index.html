@@ -9,7 +9,7 @@
     <title>Coding Quiz</title>
 </head>
 <body>
-    <div class="container" id="start-screen">
+    <div class="container" id="start-screen" data-state="shown">
         <h1 class="quiz-title">Coding Quiz Challenge</h1>
         <p class="quiz-description">
             Your going to be asked a series of coding based questions while being timed. The more questoins you answer correctly and the faster you complete the quiz the higher the score you will get. Keep trying to beat your highscore while learning more about coding. Good luck!
@@ -18,19 +18,19 @@
         <p class="highscores"><a href="#">View Highscores</a></p>
     </div>
     
-    <div class="container" id="quiz">
-        <h4 id="quiz-question">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt dolor aliquam enim quae error nam eligendi beatae molestias deleniti, excepturi commodi architecto numquam ab qui mollitia eum corrupti unde at.</h4>
+    <div class="container" id="quiz-container" data-state="hidden">
+        <h4 id="quiz-question"></h4>
 
-        <button  class="quiz-button" id="answ-1">answer1</button>
-        <button  class="quiz-button" id="answ-2">answer2</button>
-        <button  class="quiz-button" id="answ-3">answer3</button>
-        <button  class="quiz-button" id="answ-4">answer4</button>
-        <p class="right-wrong">Right</p>
-        <p class="time-left">15</p>
+        <button  class="quiz-button" id="answ-a" data-is="wrong"></button>
+        <button  class="quiz-button" id="answ-b" data-is="wrong"></button>
+        <button  class="quiz-button" id="answ-c" data-is="wrong"></button>
+        <button  class="quiz-button" id="answ-d" data-is="wrong"></button>
+        <p class="right-wrong" data-state="hidden"></p>
+        <p class="time-left"></p>
         <p class="highscores"><a href="#">View Highscores</a></p>
     </div>
 
-    <!-- <div class="container finished">
+    <div class="container finished" data-state="hidden">
         <h2>Finished!</h2>
         <p class="final-score">Your final score was: </p>
         <p>Enter your initials below to save your highscore!</p>
@@ -38,10 +38,10 @@
             <input type="text" name="enter-initials" id="initials" placeholder="enter your initials">
             <button type="submit" class="submit-btn">Submit</button>
         </form>
-        <p class="time-left-final">15</p>
-    </div> -->
+        <p class="time-left-final"></p>
+    </div>
 
-    <!-- <div class="container highscore-page">
+    <div class="container highscore-page" data-state="hidden">
         <h2>Highscores</h2>
         <ul class="highscore-list">
             <li>AB -202 points</li>
@@ -52,7 +52,7 @@
             <button class="clear-hs">Clear</button>
             <button class="go-back">Go Back</button>
         </div>
-    </div> -->
+    </div>
 
     <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
